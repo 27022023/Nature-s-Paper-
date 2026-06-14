@@ -8,25 +8,96 @@
     body {
         margin: 0;
         padding: 0;
-        background: #f7faff;
+        background: #f0f6ff;
         font-family: "Poppins", sans-serif;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .main-wrapper {
+        flex: 3;
+    }
+
+    .sidebar {
+        flex: 1;
+        background: #fff7e6;
+        padding: 30px;
+        box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+    }
+
+    .sidebar h2 {
+        font-size: 40px;
+        margin-top: 0;
+        font-family: "Brush Script MT", cursive;
+    }
+
+    .sidebar label, .sidebar input, .sidebar select, .sidebar button, .sidebar textarea {
+        font-size: 22px;
+    }
+
+    .sidebar input, .sidebar select, .sidebar textarea {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 15px;
+        border: 1px solid #ccc;
+    }
+
+    .sidebar button {
+        padding: 12px 20px;
+        border-radius: 20px;
+        border: none;
+        background: #ffd480;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+
+    .sidebar button:hover {
+        background: #ffc266;
+    }
+
+    .profile-list {
+        margin-top: 20px;
+        max-height: 300px;
+        overflow-y: auto;
+        font-size: 20px;
     }
 
     .title {
         text-align: center;
         margin-top: 30px;
-        font-size: 110px;
+        font-size: 130px;
         color: black;
         font-family: "Brush Script MT", cursive;
         text-shadow: 4px 4px 12px rgba(0,0,0,0.25);
     }
 
+    .nav-buttons {
+        width: 90%;
+        margin: 20px auto;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .nav-buttons button {
+        padding: 30px 50px;
+        font-size: 36px;
+        border-radius: 30px;
+        border: none;
+        background: #cce6ff;
+        cursor: pointer;
+    }
+
+    .nav-buttons button:hover {
+        background: #b3d9ff;
+    }
+
     .reminder-bar {
         width: 90%;
         margin: 20px auto 0;
-        padding: 20px 30px;
-        border-radius: 25px;
-        font-size: 30px;
+        padding: 30px 40px;
+        border-radius: 35px;
+        font-size: 38px;
         box-shadow: 0 0 20px rgba(0,0,0,0.12);
     }
 
@@ -36,49 +107,50 @@
 
     .reminder-tomorrow {
         background: #ffe6b3;
-        margin-top: 15px;
+        margin-top: 20px;
     }
 
     .calendar-container {
         width: 90%;
         margin: 30px auto 40px;
         background: #e3f2ff;
-        padding: 40px;
-        border-radius: 40px;
-        box-shadow: 0 0 35px rgba(0,0,0,0.15);
+        padding: 60px;
+        border-radius: 50px;
+        box-shadow: 0 0 40px rgba(0,0,0,0.15);
     }
 
     .month-header {
         text-align: center;
-        font-size: 60px;
-        margin-bottom: 20px;
+        font-size: 80px;
+        margin-bottom: 40px;
         color: #333;
     }
 
     .calendar-grid {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
-        gap: 20px;
-        font-size: 30px;
+        gap: 30px;
+        font-size: 38px;
     }
 
     .day {
         background: white;
-        padding: 25px;
-        border-radius: 25px;
+        padding: 40px;
+        border-radius: 35px;
         text-align: center;
         cursor: pointer;
-        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
         transition: 0.2s;
+        font-size: 38px;
     }
 
     .day:hover {
         background: #d9ecff;
-        transform: scale(1.05);
+        transform: scale(1.08);
     }
 
     .day.has-tasks {
-        border: 3px solid #8fd99c;
+        border: 5px solid #8fd99c;
     }
 
     .popup {
@@ -87,45 +159,47 @@
         left: 50%;
         transform: translate(-50%, -50%);
         background: white;
-        padding: 40px;
-        border-radius: 30px;
-        box-shadow: 0 0 30px rgba(0,0,0,0.2);
-        width: 50%;
+        padding: 60px;
+        border-radius: 45px;
+        box-shadow: 0 0 40px rgba(0,0,0,0.25);
+        width: 60%;
         display: none;
-        font-size: 30px;
+        font-size: 38px;
+        z-index: 10;
     }
 
     .popup h2 {
         margin-top: 0;
-        font-size: 50px;
+        font-size: 70px;
         color: #333;
         font-family: "Brush Script MT", cursive;
     }
 
     textarea {
         width: 100%;
-        height: 220px;
-        font-size: 26px;
-        padding: 20px;
-        border-radius: 20px;
+        height: 300px;
+        font-size: 32px;
+        padding: 30px;
+        border-radius: 30px;
         border: 2px solid #ccc;
         resize: none;
     }
 
     .suggestions {
-        margin-top: 20px;
-        font-size: 24px;
+        margin-top: 25px;
+        font-size: 32px;
         background: #f7faff;
-        padding: 15px;
-        border-radius: 20px;
+        padding: 25px;
+        border-radius: 30px;
+        white-space: pre-line;
     }
 
     .save-btn, .close-btn {
-        margin-top: 20px;
-        padding: 20px 40px;
-        font-size: 28px;
+        margin-top: 30px;
+        padding: 30px 50px;
+        font-size: 36px;
         border: none;
-        border-radius: 20px;
+        border-radius: 30px;
         cursor: pointer;
     }
 
@@ -144,19 +218,72 @@
     .close-btn:hover {
         background: #ff9999;
     }
+
+    .year-overview {
+        margin-top: 30px;
+        font-size: 22px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .year-overview h3 {
+        margin-top: 0;
+        font-size: 26px;
+    }
+
+    .year-overview ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .year-overview li {
+        margin-bottom: 5px;
+    }
 </style>
 </head>
 
 <body>
 
-<div class="title">Plant Care Calendar 🍃</div>
+<div class="main-wrapper">
+    <div class="title">Plant Care Calendar 🍃</div>
 
-<div class="reminder-bar reminder-today" id="reminderToday" style="display:none;"></div>
-<div class="reminder-bar reminder-tomorrow" id="reminderTomorrow" style="display:none;"></div>
+    <div class="nav-buttons">
+        <button onclick="changeMonth(-1)">← Previous Month</button>
+        <button onclick="changeMonth(1)">Next Month →</button>
+    </div>
 
-<div class="calendar-container">
-    <div class="month-header" id="monthName"></div>
-    <div class="calendar-grid" id="calendarGrid"></div>
+    <div class="reminder-bar reminder-today" id="reminderToday" style="display:none;"></div>
+    <div class="reminder-bar reminder-tomorrow" id="reminderTomorrow" style="display:none;"></div>
+
+    <div class="calendar-container">
+        <div class="month-header" id="monthName"></div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+    </div>
+</div>
+
+<div class="sidebar">
+    <h2>Plant Library 🌿</h2>
+    <label>Plant name:</label>
+    <input id="plantName" placeholder="Monstera, Orchid, Cactus...">
+    <label>Type:</label>
+    <select id="plantType">
+        <option value="tropical">Tropical</option>
+        <option value="succulent">Succulent / Cactus</option>
+        <option value="orchid">Orchid</option>
+        <option value="herb">Herb</option>
+        <option value="other">Other</option>
+    </select>
+    <label>Notes:</label>
+    <textarea id="plantNotes" placeholder="Light, soil, special needs..."></textarea>
+    <button onclick="addPlantProfile()">Save Plant Profile</button>
+
+    <div class="profile-list" id="profileList"></div>
+
+    <div class="year-overview" id="yearOverview">
+        <h3>Year Overview 📅</h3>
+        <ul id="yearOverviewList"></ul>
+    </div>
 </div>
 
 <div class="popup" id="popup">
@@ -168,53 +295,95 @@
 </div>
 
 <script>
-const monthNames = [
-    "January 🌨️", "February 💗", "March 🌱", "April 🌸",
-    "May 🌼", "June 🌿", "July ☀️", "August 🌻",
-    "September 🍂", "October 🎃", "November 🍁", "December 🎄"
-];
-
-const today = new Date();
-const month = today.getMonth();
-const year = today.getFullYear();
-
-document.getElementById("monthName").innerText = monthNames[month] + " " + year;
-
-const firstDay = new Date(year, month, 1).getDay();
-const daysInMonth = new Date(year, month + 1, 0).getDate();
-const grid = document.getElementById("calendarGrid");
-
-function getKey(day) {
-    return `plantTasks_${year}_${month}_${day}`;
+/* NOTIFICATIONS */
+if ("Notification" in window) {
+    Notification.requestPermission();
 }
 
-for (let i = 0; i < firstDay; i++) {
-    const empty = document.createElement("div");
-    grid.appendChild(empty);
-}
+/* GLOBAL STATE */
+let currentMonth = new Date().getMonth();
+let currentYear = new Date().getFullYear();
 
-for (let day = 1; day <= daysInMonth; day++) {
-    const cell = document.createElement("div");
-    cell.className = "day";
-    cell.innerText = day;
+/* PLANT LIBRARY (shared with AI Gardener via localStorage key) */
+const PLANT_PROFILE_KEY = "plantProfiles";
 
-    const saved = localStorage.getItem(getKey(day));
-    if (saved && saved.trim() !== "") {
-        cell.classList.add("has-tasks");
+/* RENDER CALENDAR */
+function renderCalendar() {
+    const monthNames = [
+        "January 🌨️", "February 💗", "March 🌱", "April 🌸",
+        "May 🌼", "June 🌿", "July ☀️", "August 🌻",
+        "September 🍂", "October 🎃", "November 🍁", "December 🎄"
+    ];
+
+    document.getElementById("monthName").innerText =
+        monthNames[currentMonth] + " " + currentYear;
+
+    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    const grid = document.getElementById("calendarGrid");
+    grid.innerHTML = "";
+
+    for (let i = 0; i < firstDay; i++) {
+        const empty = document.createElement("div");
+        grid.appendChild(empty);
     }
 
-    cell.onclick = () => openPopup(day);
-    grid.appendChild(cell);
+    for (let day = 1; day <= daysInMonth; day++) {
+        const cell = document.createElement("div");
+        cell.className = "day";
+        cell.innerText = day;
+
+        const saved = localStorage.getItem(getTaskKey(day));
+        if (saved && saved.trim() !== "") {
+            cell.classList.add("has-tasks");
+        }
+
+        cell.onclick = () => openPopup(day);
+        grid.appendChild(cell);
+    }
+
+    updateReminders();
+    renderYearOverview();
 }
 
+/* MONTH NAVIGATION */
+function changeMonth(direction) {
+    currentMonth += direction;
+
+    if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+    }
+
+    if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+    }
+
+    renderCalendar();
+}
+
+/* MEMORY KEYS */
+function getTaskKey(day) {
+    return `plantTasks_${currentYear}_${currentMonth}_${day}`;
+}
+
+/* POPUP */
 function openPopup(day) {
     const popup = document.getElementById("popup");
     popup.style.display = "block";
 
-    document.getElementById("popupDate").innerText =
-        `${monthNames[month]} ${day}`;
+    const monthNames = [
+        "January 🌨️", "February 💗", "March 🌱", "April 🌸",
+        "May 🌼", "June 🌿", "July ☀️", "August 🌻",
+        "September 🍂", "October 🎃", "November 🍁", "December 🎄"
+    ];
 
-    const saved = localStorage.getItem(getKey(day)) || "";
+    document.getElementById("popupDate").innerText =
+        `${monthNames[currentMonth]} ${day}`;
+
+    const saved = localStorage.getItem(getTaskKey(day)) || "";
     document.getElementById("taskInput").value = saved;
 
     document.getElementById("suggestionsBox").innerText =
@@ -232,90 +401,198 @@ function saveTasks() {
     const day = popup.getAttribute("data-day");
     const text = document.getElementById("taskInput").value;
 
-    localStorage.setItem(getKey(day), text);
+    localStorage.setItem(getTaskKey(day), text);
 
-    const cells = document.getElementsByClassName("day");
-    for (let cell of cells) {
-        if (parseInt(cell.innerText) === parseInt(day)) {
-            if (text.trim() !== "") cell.classList.add("has-tasks");
-            else cell.classList.remove("has-tasks");
-        }
-    }
-
-    updateReminders();
+    renderCalendar();
     closePopup();
 }
 
-/* SMART SUGGESTIONS (PLANT‑CARE ENGINE) */
+/* AUTO‑SCHEDULE + SUGGESTIONS */
 function generateSmartSuggestions(day, existingText) {
+    const monthNames = [
+        "January", "February", "March", "April",
+        "May", "June", "July", "August",
+        "September", "October", "November", "December"
+    ];
+
+    const monthLabel = monthNames[currentMonth].toLowerCase();
     const base = [];
-    const monthLabel = monthNames[month].toLowerCase();
 
-    if (monthLabel.includes("march") || monthLabel.includes("april") || monthLabel.includes("may")) {
-        base.push("🌱 Spring tip: Great time to repot root‑bound plants.");
-        base.push("🌼 Consider starting fertilizer every 4 weeks.");
+    // Seasonal
+    if (["march", "april", "may"].includes(monthLabel)) {
+        base.push("🌱 Spring: Repot root‑bound plants.");
+        base.push("🌼 Start monthly fertilizing.");
     }
 
-    if (monthLabel.includes("june") || monthLabel.includes("july") || monthLabel.includes("august")) {
-        base.push("☀️ Summer tip: Check soil more often, it dries faster.");
-        base.push("💧 Water early morning or evening to avoid evaporation.");
+    if (["june", "july", "august"].includes(monthLabel)) {
+        base.push("☀️ Summer: Soil dries fast — check moisture often.");
+        base.push("💧 Water early morning or evening.");
     }
 
-    if (monthLabel.includes("september") || monthLabel.includes("october")) {
-        base.push("🍂 Autumn tip: Reduce fertilizer, plants slow down.");
+    if (["september", "october"].includes(monthLabel)) {
+        base.push("🍂 Autumn: Reduce fertilizer.");
         base.push("🌿 Check for pests before bringing plants indoors.");
     }
 
-    if (monthLabel.includes("november") || monthLabel.includes("december") || monthLabel.includes("january") || monthLabel.includes("february")) {
-        base.push("❄️ Winter tip: Water less, growth is slower.");
-        base.push("🌤 Move plants closer to windows for more light.");
+    if (["november", "december", "january", "february"].includes(monthLabel)) {
+        base.push("❄️ Winter: Water less, growth slows.");
+        base.push("🌤 Move plants closer to windows.");
     }
 
-    if (existingText.toLowerCase().includes("monstera")) {
-        base.push("🌱 Monstera: Check for aerial roots and support with a moss pole.");
+    // Plant‑specific from text
+    const textLower = existingText.toLowerCase();
+
+    if (textLower.includes("monstera")) {
+        base.push("🌱 Monstera: Water every 7–10 days; mist leaves.");
     }
-    if (existingText.toLowerCase().includes("orchid")) {
-        base.push("🌸 Orchid: Make sure roots are not sitting in water.");
+    if (textLower.includes("orchid")) {
+        base.push("🌸 Orchid: Weekly soak + drain; bright filtered light.");
     }
-    if (existingText.toLowerCase().includes("cactus") || existingText.toLowerCase().includes("succulent")) {
-        base.push("🌵 Cactus/Succulent: Confirm soil is completely dry before watering.");
+    if (textLower.includes("cactus") || textLower.includes("succulent")) {
+        base.push("🌵 Cactus/Succulent: Water every 2–3 weeks; full sun.");
     }
+
+    // Plant‑specific from library
+    const profiles = loadPlantProfiles();
+    profiles.forEach(p => {
+        if (existingText.toLowerCase().includes(p.name.toLowerCase())) {
+            if (p.type === "tropical") {
+                base.push(`🌿 ${p.name}: Water every 5–7 days, bright indirect light.`);
+            }
+            if (p.type === "succulent") {
+                base.push(`🌵 ${p.name}: Water every 2–3 weeks, very bright light.`);
+            }
+            if (p.type === "orchid") {
+                base.push(`🌸 ${p.name}: Weekly soak, orchid bark, high humidity.`);
+            }
+            if (p.type === "herb") {
+                base.push(`🌿 ${p.name}: Keep soil slightly moist, full sun.`);
+            }
+        }
+    });
 
     if (base.length === 0) {
-        return "🌿 Tip: Add plant names (Monstera, Orchid, Cactus, Basil, etc.) so I can give specific suggestions.";
+        return "🌿 Tip: Add plant names or use the Plant Library so I can auto‑generate schedules.";
     }
 
     return base.join("\n");
 }
 
-/* REMINDER ENGINE */
+/* REMINDERS + NOTIFICATIONS */
 function updateReminders() {
     const reminderToday = document.getElementById("reminderToday");
     const reminderTomorrow = document.getElementById("reminderTomorrow");
 
+    const today = new Date();
     const todayDay = today.getDate();
     const tomorrowDay = todayDay + 1;
 
-    const todayTasks = localStorage.getItem(getKey(todayDay));
-    const tomorrowTasks = localStorage.getItem(getKey(tomorrowDay));
+    const todayTasks = localStorage.getItem(getTaskKey(todayDay));
+    const tomorrowTasks = localStorage.getItem(getTaskKey(tomorrowDay));
 
     if (todayTasks && todayTasks.trim() !== "") {
         reminderToday.style.display = "block";
-        reminderToday.innerText = `🌿 Today (${monthNames[month]} ${todayDay}): You have plant tasks: ${todayTasks}`;
+        reminderToday.innerText = `🌿 Today: ${todayTasks}`;
+
+        if (Notification.permission === "granted") {
+            new Notification("🌿 Plant Care Reminder", {
+                body: todayTasks
+            });
+        }
     } else {
         reminderToday.style.display = "none";
     }
 
-    if (tomorrowDay <= daysInMonth && tomorrowTasks && tomorrowTasks.trim() !== "") {
+    if (tomorrowTasks && tomorrowTasks.trim() !== "") {
         reminderTomorrow.style.display = "block";
-        reminderTomorrow.innerText = `🍃 Tomorrow (${monthNames[month]} ${tomorrowDay}): Upcoming plant tasks: ${tomorrowTasks}`;
+        reminderTomorrow.innerText = `🍃 Tomorrow: ${tomorrowTasks}`;
     } else {
         reminderTomorrow.style.display = "none";
     }
 }
 
-updateReminders();
+/* PLANT LIBRARY FUNCTIONS */
+function loadPlantProfiles() {
+    const raw = localStorage.getItem(PLANT_PROFILE_KEY);
+    if (!raw) return [];
+    try {
+        return JSON.parse(raw);
+    } catch {
+        return [];
+    }
+}
+
+function savePlantProfiles(profiles) {
+    localStorage.setItem(PLANT_PROFILE_KEY, JSON.stringify(profiles));
+}
+
+function addPlantProfile() {
+    const name = document.getElementById("plantName").value.trim();
+    const type = document.getElementById("plantType").value;
+    const notes = document.getElementById("plantNotes").value.trim();
+
+    if (!name) return;
+
+    const profiles = loadPlantProfiles();
+    profiles.push({ name, type, notes });
+    savePlantProfiles(profiles);
+
+    document.getElementById("plantName").value = "";
+    document.getElementById("plantNotes").value = "";
+
+    renderPlantProfiles();
+    renderYearOverview();
+}
+
+function renderPlantProfiles() {
+    const list = document.getElementById("profileList");
+    const profiles = loadPlantProfiles();
+    list.innerHTML = "";
+
+    if (profiles.length === 0) {
+        list.innerText = "No plants saved yet. Add some above!";
+        return;
+    }
+
+    profiles.forEach(p => {
+        const div = document.createElement("div");
+        div.innerText = `• ${p.name} (${p.type}) – ${p.notes}`;
+        list.appendChild(div);
+    });
+}
+
+/* YEAR OVERVIEW */
+function renderYearOverview() {
+    const ul = document.getElementById("yearOverviewList");
+    ul.innerHTML = "";
+
+    const monthNames = [
+        "January", "February", "March", "April",
+        "May", "June", "July", "August",
+        "September", "October", "November", "December"
+    ];
+
+    for (let m = 0; m < 12; m++) {
+        let count = 0;
+        const daysInMonth = new Date(currentYear, m + 1, 0).getDate();
+        for (let d = 1; d <= daysInMonth; d++) {
+            const key = `plantTasks_${currentYear}_${m}_${d}`;
+            const val = localStorage.getItem(key);
+            if (val && val.trim() !== "") count++;
+        }
+        const li = document.createElement("li");
+        li.innerText = `${monthNames[m]}: ${count} days with tasks`;
+        ul.appendChild(li);
+    }
+}
+
+/* INITIAL RENDER */
+renderCalendar();
+renderPlantProfiles();
 </script>
 
 </body>
 </html>
+
+    
+            
