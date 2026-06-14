@@ -3,71 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <title>Nature's Paper</title>
+
 <style>
     body {
         margin: 0;
         padding: 0;
-        background: #cfeaff; /* pastel baby blue */
-        font-family: "Georgia", serif;
+        background: #bfe7ff; /* pastel baby blue */
+        font-family: "Poppins", sans-serif;
         overflow-x: hidden;
     }
 
-    /* Sun */
+    /* BIG SUN */
     .sun {
         position: absolute;
-        top: 20px;
-        left: 20px;
-        width: 120px;
-        height: 120px;
+        top: 30px;
+        left: 30px;
+        width: 180px;
+        height: 180px;
         background: #ffeb7f;
         border-radius: 50%;
-        box-shadow: 0 0 40px #ffe066;
+        box-shadow: 0 0 60px #ffe066;
     }
 
-    /* Grass + flowers + windmills */
+    /* GRASS + FLOWERS + WINDMILLS (FULL WIDTH) */
     .ground {
         position: absolute;
         bottom: 0;
         width: 100%;
         height: 45vh;
-        background: url('https://i.imgur.com/3YQFQ8G.png'); /* placeholder grass image */
-        background-size: cover;
-        background-position: bottom;
+        background: linear-gradient(#7ed957, #4caf50);
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        overflow: hidden;
     }
 
-    /* Title */
+    /* Decorative flowers */
+    .flower {
+        width: 60px;
+        height: 60px;
+        margin: 0 20px;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    /* Windmill */
+    .windmill {
+        width: 120px;
+        height: 200px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: 0 40px;
+    }
+
+    /* TITLE — BIGGER, BEAUTIFUL */
     .title {
         position: absolute;
-        top: 35%;
+        top: 28%;
         width: 100%;
         text-align: center;
-        font-size: 70px;
+        font-size: 90px;
         color: white;
         font-family: "Brush Script MT", cursive;
-        text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+        text-shadow: 3px 3px 10px rgba(0,0,0,0.25);
     }
 
-    /* Menu button */
+    /* MENU BUTTON — BIGGER */
     .menu-btn {
         position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 45px;
+        top: 40px;
+        right: 40px;
+        font-size: 70px;
         cursor: pointer;
     }
 
-    /* Sidebar */
+    /* SIDEBAR — BIGGER, PRETTIER */
     .sidebar {
         position: fixed;
         top: 0;
-        left: -260px;
-        width: 260px;
+        left: -300px;
+        width: 300px;
         height: 100%;
-        background: #fff4b8; /* pastel yellow */
-        box-shadow: 3px 0 10px rgba(0,0,0,0.2);
-        padding: 30px;
+        background: #fff4b8;
+        box-shadow: 4px 0 15px rgba(0,0,0,0.25);
+        padding: 40px;
         transition: 0.4s;
-        font-family: "Verdana", sans-serif;
+        font-size: 24px;
     }
 
     .sidebar.open {
@@ -76,21 +97,22 @@
 
     .sidebar h2 {
         margin-top: 0;
-        font-size: 28px;
+        font-size: 36px;
         color: #6b5b00;
+        font-family: "Brush Script MT", cursive;
     }
 
     .sidebar a {
         display: block;
-        margin: 18px 0;
-        font-size: 20px;
+        margin: 25px 0;
         text-decoration: none;
         color: #4a4a4a;
+        font-size: 24px;
     }
 
     .sidebar a:hover {
         color: #2d7a2d;
-        transform: translateX(5px);
+        transform: translateX(8px);
         transition: 0.2s;
     }
 </style>
@@ -113,7 +135,12 @@
     <a href="school.html">Nature School 🌸</a>
 </div>
 
-<div class="ground"></div>
+<!-- GROUND DECORATIONS -->
+<div class="ground">
+    <div class="flower" style="background-image:url('https://i.imgur.com/8YQ8p8X.png');"></div>
+    <div class="windmill" style="background-image:url('https://i.imgur.com/0Y0Y0Y0.png');"></div>
+    <div class="flower" style="background-image:url('https://i.imgur.com/8YQ8p8X.png');"></div>
+</div>
 
 <script>
 function toggleMenu() {
@@ -123,3 +150,4 @@ function toggleMenu() {
 
 </body>
 </html>
+    
