@@ -10,57 +10,6 @@
         padding: 0;
         background: #f0f6ff;
         font-family: "Poppins", sans-serif;
-        display: flex;
-        flex-direction: row;
-    }
-
-    .main-wrapper {
-        flex: 3;
-    }
-
-    .sidebar {
-        flex: 1;
-        background: #fff7e6;
-        padding: 30px;
-        box-shadow: -5px 0 25px rgba(0,0,0,0.1);
-    }
-
-    .sidebar h2 {
-        font-size: 40px;
-        margin-top: 0;
-        font-family: "Brush Script MT", cursive;
-    }
-
-    .sidebar label, .sidebar input, .sidebar select, .sidebar button, .sidebar textarea {
-        font-size: 22px;
-    }
-
-    .sidebar input, .sidebar select, .sidebar textarea {
-        width: 100%;
-        margin-bottom: 10px;
-        padding: 10px;
-        border-radius: 15px;
-        border: 1px solid #ccc;
-    }
-
-    .sidebar button {
-        padding: 12px 20px;
-        border-radius: 20px;
-        border: none;
-        background: #ffd480;
-        cursor: pointer;
-        margin-top: 5px;
-    }
-
-    .sidebar button:hover {
-        background: #ffc266;
-    }
-
-    .profile-list {
-        margin-top: 20px;
-        max-height: 300px;
-        overflow-y: auto;
-        font-size: 20px;
     }
 
     .title {
@@ -72,16 +21,36 @@
         text-shadow: 4px 4px 12px rgba(0,0,0,0.25);
     }
 
-    .nav-buttons {
+    .section {
         width: 90%;
-        margin: 20px auto;
+        margin: 25px auto;
+        background: #ffffff;
+        border-radius: 40px;
+        box-shadow: 0 0 30px rgba(0,0,0,0.12);
+        padding: 35px 45px;
+    }
+
+    .section.calendar {
+        background: #e3f2ff;
+    }
+
+    .section.library {
+        background: #fff7e6;
+    }
+
+    .section.overview {
+        background: #f5f0ff;
+    }
+
+    .nav-buttons {
         display: flex;
         justify-content: space-between;
+        margin-top: 10px;
     }
 
     .nav-buttons button {
-        padding: 30px 50px;
-        font-size: 36px;
+        padding: 25px 40px;
+        font-size: 32px;
         border-radius: 30px;
         border: none;
         background: #cce6ff;
@@ -93,12 +62,11 @@
     }
 
     .reminder-bar {
-        width: 90%;
-        margin: 20px auto 0;
-        padding: 30px 40px;
-        border-radius: 35px;
-        font-size: 38px;
-        box-shadow: 0 0 20px rgba(0,0,0,0.12);
+        margin-top: 15px;
+        padding: 25px 35px;
+        border-radius: 30px;
+        font-size: 34px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.08);
     }
 
     .reminder-today {
@@ -107,50 +75,41 @@
 
     .reminder-tomorrow {
         background: #ffe6b3;
-        margin-top: 20px;
-    }
-
-    .calendar-container {
-        width: 90%;
-        margin: 30px auto 40px;
-        background: #e3f2ff;
-        padding: 60px;
-        border-radius: 50px;
-        box-shadow: 0 0 40px rgba(0,0,0,0.15);
+        margin-top: 15px;
     }
 
     .month-header {
         text-align: center;
-        font-size: 80px;
-        margin-bottom: 40px;
+        font-size: 70px;
+        margin: 25px 0 30px;
         color: #333;
     }
 
     .calendar-grid {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
-        gap: 30px;
-        font-size: 38px;
+        gap: 25px;
+        font-size: 34px;
     }
 
     .day {
         background: white;
-        padding: 40px;
-        border-radius: 35px;
+        padding: 35px;
+        border-radius: 30px;
         text-align: center;
         cursor: pointer;
         box-shadow: 0 0 20px rgba(0,0,0,0.1);
         transition: 0.2s;
-        font-size: 38px;
+        font-size: 34px;
     }
 
     .day:hover {
         background: #d9ecff;
-        transform: scale(1.08);
+        transform: scale(1.07);
     }
 
     .day.has-tasks {
-        border: 5px solid #8fd99c;
+        border: 4px solid #8fd99c;
     }
 
     .popup {
@@ -177,27 +136,27 @@
 
     textarea {
         width: 100%;
-        height: 300px;
+        height: 260px;
         font-size: 32px;
-        padding: 30px;
+        padding: 25px;
         border-radius: 30px;
         border: 2px solid #ccc;
         resize: none;
     }
 
     .suggestions {
-        margin-top: 25px;
-        font-size: 32px;
+        margin-top: 20px;
+        font-size: 30px;
         background: #f7faff;
-        padding: 25px;
-        border-radius: 30px;
+        padding: 20px;
+        border-radius: 25px;
         white-space: pre-line;
     }
 
     .save-btn, .close-btn {
-        margin-top: 30px;
-        padding: 30px 50px;
-        font-size: 36px;
+        margin-top: 25px;
+        padding: 25px 45px;
+        font-size: 34px;
         border: none;
         border-radius: 30px;
         cursor: pointer;
@@ -219,35 +178,71 @@
         background: #ff9999;
     }
 
-    .year-overview {
-        margin-top: 30px;
-        font-size: 22px;
-        background: #fff;
-        padding: 20px;
-        border-radius: 20px;
-    }
-
-    .year-overview h3 {
+    .section h2 {
         margin-top: 0;
-        font-size: 26px;
+        font-size: 50px;
+        font-family: "Brush Script MT", cursive;
+        color: #333;
     }
 
-    .year-overview ul {
+    .library label {
+        font-size: 26px;
+        display: block;
+        margin-top: 10px;
+    }
+
+    .library input,
+    .library select,
+    .library textarea {
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        padding: 12px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        font-size: 24px;
+    }
+
+    .library button {
+        padding: 18px 30px;
+        border-radius: 25px;
+        border: none;
+        background: #ffd480;
+        cursor: pointer;
+        font-size: 26px;
+        margin-top: 5px;
+    }
+
+    .library button:hover {
+        background: #ffc266;
+    }
+
+    .profile-list {
+        margin-top: 15px;
+        max-height: 250px;
+        overflow-y: auto;
+        font-size: 22px;
+    }
+
+    .year-overview-list {
         list-style: none;
         padding-left: 0;
+        font-size: 24px;
+        margin-top: 10px;
     }
 
-    .year-overview li {
-        margin-bottom: 5px;
+    .year-overview-list li {
+        margin-bottom: 6px;
     }
 </style>
 </head>
 
 <body>
 
-<div class="main-wrapper">
-    <div class="title">Plant Care Calendar 🍃</div>
+<div class="title">Plant Care Calendar 🍃</div>
 
+<!-- NAV + REMINDERS -->
+<div class="section">
     <div class="nav-buttons">
         <button onclick="changeMonth(-1)">← Previous Month</button>
         <button onclick="changeMonth(1)">Next Month →</button>
@@ -255,14 +250,16 @@
 
     <div class="reminder-bar reminder-today" id="reminderToday" style="display:none;"></div>
     <div class="reminder-bar reminder-tomorrow" id="reminderTomorrow" style="display:none;"></div>
-
-    <div class="calendar-container">
-        <div class="month-header" id="monthName"></div>
-        <div class="calendar-grid" id="calendarGrid"></div>
-    </div>
 </div>
 
-<div class="sidebar">
+<!-- CALENDAR -->
+<div class="section calendar">
+    <div class="month-header" id="monthName"></div>
+    <div class="calendar-grid" id="calendarGrid"></div>
+</div>
+
+<!-- PLANT LIBRARY -->
+<div class="section library">
     <h2>Plant Library 🌿</h2>
     <label>Plant name:</label>
     <input id="plantName" placeholder="Monstera, Orchid, Cactus...">
@@ -279,13 +276,15 @@
     <button onclick="addPlantProfile()">Save Plant Profile</button>
 
     <div class="profile-list" id="profileList"></div>
-
-    <div class="year-overview" id="yearOverview">
-        <h3>Year Overview 📅</h3>
-        <ul id="yearOverviewList"></ul>
-    </div>
 </div>
 
+<!-- YEAR OVERVIEW -->
+<div class="section overview">
+    <h2>Year Overview 📅</h2>
+    <ul class="year-overview-list" id="yearOverviewList"></ul>
+</div>
+
+<!-- POPUP -->
 <div class="popup" id="popup">
     <h2 id="popupDate"></h2>
     <div class="suggestions" id="suggestionsBox"></div>
@@ -303,8 +302,6 @@ if ("Notification" in window) {
 /* GLOBAL STATE */
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
-
-/* PLANT LIBRARY (shared with AI Gardener via localStorage key) */
 const PLANT_PROFILE_KEY = "plantProfiles";
 
 /* RENDER CALENDAR */
@@ -418,7 +415,6 @@ function generateSmartSuggestions(day, existingText) {
     const monthLabel = monthNames[currentMonth].toLowerCase();
     const base = [];
 
-    // Seasonal
     if (["march", "april", "may"].includes(monthLabel)) {
         base.push("🌱 Spring: Repot root‑bound plants.");
         base.push("🌼 Start monthly fertilizing.");
@@ -439,7 +435,6 @@ function generateSmartSuggestions(day, existingText) {
         base.push("🌤 Move plants closer to windows.");
     }
 
-    // Plant‑specific from text
     const textLower = existingText.toLowerCase();
 
     if (textLower.includes("monstera")) {
@@ -452,7 +447,6 @@ function generateSmartSuggestions(day, existingText) {
         base.push("🌵 Cactus/Succulent: Water every 2–3 weeks; full sun.");
     }
 
-    // Plant‑specific from library
     const profiles = loadPlantProfiles();
     profiles.forEach(p => {
         if (existingText.toLowerCase().includes(p.name.toLowerCase())) {
@@ -511,7 +505,7 @@ function updateReminders() {
     }
 }
 
-/* PLANT LIBRARY FUNCTIONS */
+/* PLANT LIBRARY */
 function loadPlantProfiles() {
     const raw = localStorage.getItem(PLANT_PROFILE_KEY);
     if (!raw) return [];
@@ -594,5 +588,5 @@ renderPlantProfiles();
 </body>
 </html>
 
-    
-            
+                    
+                        
