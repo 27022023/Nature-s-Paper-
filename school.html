@@ -54,6 +54,27 @@
         border-left: 10px solid #ff9ac2;
     }
 
+    /* PLANT OF THE DAY */
+    .plant-day-box {
+        background: #ffe6f2;
+        padding: 40px;
+        border-radius: 35px;
+        font-size: 40px;
+        border-left: 12px solid #ff7fb8;
+        animation: popIn 1s ease;
+    }
+
+    @keyframes popIn {
+        from { transform: scale(0.8); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    .plant-day-name {
+        font-size: 70px;
+        font-family: "Brush Script MT", cursive;
+        margin-bottom: 20px;
+    }
+
     /* QUIZ */
     .quiz-box {
         background: #ffe6f2;
@@ -130,48 +151,6 @@
         from { transform: scale(0.5); opacity: 0; }
         to { transform: scale(1); opacity: 1; }
     }
-
-    /* AI TEACHER */
-    .teacher-box {
-        background: #ffe6f2;
-        padding: 40px;
-        border-radius: 35px;
-        margin-top: 40px;
-        font-size: 32px;
-        border-left: 12px solid #ff7fb8;
-    }
-
-    .teacher-input {
-        width: 100%;
-        padding: 20px;
-        font-size: 30px;
-        border-radius: 20px;
-        border: 2px solid #ffb3d9;
-        margin-top: 20px;
-    }
-
-    .teacher-btn {
-        padding: 20px 40px;
-        font-size: 32px;
-        border-radius: 25px;
-        border: none;
-        background: #ff9ac2;
-        cursor: pointer;
-        margin-top: 20px;
-    }
-
-    .teacher-btn:hover {
-        background: #ff7fb8;
-    }
-
-    .teacher-response {
-        margin-top: 20px;
-        font-size: 32px;
-        background: #ffffff;
-        padding: 25px;
-        border-radius: 25px;
-        border-left: 10px solid #ff9ac2;
-    }
 </style>
 </head>
 
@@ -179,11 +158,20 @@
 
 <div class="title">Nature School 🌸</div>
 
+<!-- PLANT OF THE DAY -->
+<div class="section">
+    <h2>Plant of the Day 🌼</h2>
+
+    <div class="plant-day-box" id="plantOfDayBox">
+        <div class="plant-day-name" id="plantOfDayName">Loading...</div>
+        <div id="plantOfDayInfo"></div>
+    </div>
+</div>
+
 <!-- PLANT ENCYCLOPEDIA -->
 <div class="section">
     <h2>Plant Encyclopedia 🌿</h2>
 
-    <!-- MASSIVE encyclopedia categories -->
     <div class="plant-category"><strong>🌱 Tropical Plants</strong><br>Bright indirect light, humidity 60–80%, compost-rich soil, eco-friendly misting.</div>
     <div class="plant-category"><strong>🌵 Succulents & Cacti</strong><br>Full sun, gritty soil, water every 2–3 weeks, terracotta pots.</div>
     <div class="plant-category"><strong>🌿 Herbs</strong><br>Full sun, moist soil, trim often, reduce food waste.</div>
@@ -214,19 +202,50 @@
     </div>
 </div>
 
-<!-- AI TEACHER -->
-<div class="section">
-    <h2>Ask the Plant Teacher 🍃</h2>
-
-    <div class="teacher-box">
-        <input class="teacher-input" id="teacherInput" placeholder="Ask anything about plants...">
-        <button class="teacher-btn" onclick="askTeacher()">Ask</button>
-        <div class="teacher-response" id="teacherResponse"></div>
-    </div>
-</div>
-
 <script>
-/* QUIZ SYSTEM */
+/* --------------------------
+   PLANT OF THE DAY SYSTEM
+--------------------------- */
+const plantData = [
+    {
+        name: "Monstera Deliciosa",
+        info: "A tropical plant that loves bright indirect light and humidity. Eco tip: mist with rainwater."
+    },
+    {
+        name: "Aloe Vera",
+        info: "A succulent with healing gel. Needs full sun and sandy soil. Eco tip: propagate to reduce buying new plants."
+    },
+    {
+        name: "Lavender",
+        info: "A fragrant herb that loves full sun. Eco tip: attracts pollinators and supports biodiversity."
+    },
+    {
+        name: "Pothos",
+        info: "Beginner-friendly vine. Low light tolerant. Eco tip: grows easily from cuttings."
+    },
+    {
+        name: "Orchid",
+        info: "Needs filtered light and weekly soaking. Eco tip: use rainwater instead of tap water."
+    },
+    {
+        name: "Snake Plant",
+        info: "Air-purifying and drought tolerant. Eco tip: thrives on neglect, low resource use."
+    }
+];
+
+function loadPlantOfDay() {
+    const today = new Date().getDate();
+    const plant = plantData[today % plantData.length];
+
+    document.getElementById("plantOfDayName").innerText = plant.name;
+    document.getElementById("plantOfDayInfo").innerText = plant.info;
+}
+
+loadPlantOfDay();
+
+/* --------------------------
+   QUIZ SYSTEM
+--------------------------- */
 const quizData = [
     { question: "Which plant needs the MOST humidity?", options: ["Cactus", "Monstera", "Orchid", "Aloe"], answer: "Orchid" },
     { question: "Which water is BEST for plants?", options: ["Tap water", "Rainwater", "Salt water", "Boiled water"], answer: "Rainwater" },
@@ -296,25 +315,8 @@ function awardBadge(name) {
 }
 
 startQuiz();
-
-/* AI TEACHER */
-function askTeacher() {
-    const input = document.getElementById("teacherInput").value.toLowerCase();
-    const response = document.getElementById("teacherResponse");
-
-    if (input.includes("water")) {
-        response.innerText = "Most plants prefer rainwater or filtered water. Water slowly and deeply.";
-    } else if (input.includes("light")) {
-        response.innerText = "Bright indirect light works for most houseplants. Succulents need direct sun.";
-    } else if (input.includes("soil")) {
-        response.innerText = "Use compost-rich soil for tropicals, gritty soil for succulents, bark for orchids.";
-    } else if (input.includes("fertilizer")) {
-        response.innerText = "Use natural fertilizers like compost tea, banana peel water, or worm castings.";
-    } else {
-        response.innerText = "Great question! Observe your plant’s leaves, soil, and growth — they tell you everything.";
-    }
-}
 </script>
 
 </body>
 </html>
+                
