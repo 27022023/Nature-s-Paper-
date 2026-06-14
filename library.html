@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Plant Library 🌿</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #f0f6ff;
+        font-family: "Poppins", sans-serif;
+    }
+
+    .title {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 130px;
+        color: black;
+        font-family: "Brush Script MT", cursive;
+        text-shadow: 4px 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .section {
+        width: 90%;
+        margin: 25px auto;
+        background: #ffffff;
+        border-radius: 40px;
+        box-shadow: 0 0 30px rgba(0,0,0,0.12);
+        padding: 40px 50px;
+    }
+
+    .section h2 {
+        margin-top: 0;
+        font-size: 60px;
+        font-family: "Brush Script MT", cursive;
+        color: #333;
+    }
+
+    .search-bar {
+        width: 100%;
+        padding: 20px;
+        font-size: 30px;
+        border-radius: 25px;
+        border: 2px solid #ccc;
+        margin-bottom: 30px;
+    }
+
+    .filter-row {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .filter-row select {
+        flex: 1;
+        padding: 20px;
+        font-size: 28px;
+        border-radius: 25px;
+        border: 2px solid #ccc;
+    }
+
+    .plant-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+    }
+
+    .plant-card {
+        background: #e3f2ff;
+        padding: 30px;
+        border-radius: 30px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        font-size: 26px;
+        transition: 0.2s;
+    }
+
+    .plant-card:hover {
+        transform: scale(1.03);
+        background: #d9ecff;
+    }
+
+    .plant-card h3 {
+        margin-top: 0;
+        font-size: 40px;
+        font-family: "Brush Script MT", cursive;
+    }
+
+    .care-box,
+    .eco-box,
+    .soil-box,
+    .water-box {
+        background: #fff7e6;
+        padding: 20px;
+        border-radius: 20px;
+        margin-top: 15px;
+        font-size: 24px;
+        white-space: pre-line;
+    }
+
+    .eco-box {
+        background: #f5f0ff;
+    }
+
+    .soil-box {
+        background: #e9ffe9;
+    }
+
+    .water-box {
+        background: #e6f7ff;
+    }
+
+    .empty-message {
+        text-align: center;
+        font-size: 32px;
+        padding: 40px;
+        color: #666;
+    }
+
+    .eco-guide-list {
+        font-size: 24px;
+        line-height: 1.6;
+    }
+
+    .eco-guide-list strong {
+        display: block;
+        margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="title">Plant Library 🌿</div>
+
+<!-- MAIN LIBRARY SECTION -->
+<div class="section">
+    <h2>Your Plants</h2>
+
+    <input class="search-bar" id="searchInput" placeholder="Search plants...">
+
+    <div class="filter-row">
+        <select id="typeFilter">
+            <option value="all">All Types</option>
+            <option value="tropical">Tropical</option>
+            <option value="succulent">Succulent / Cactus</option>
+            <option value="orchid">Orchid</option>
+            <option value="herb">Herb</option>
+            <option value="other">Other</option>
+        </select>
+
+        <select id="sortFilter">
+            <option value="name">Sort by Name (A–Z)</option>
+            <option value="type">Sort by Type</option>
+        </select>
+    </div>
+
+    <div class="plant-grid" id="plantGrid"></div>
+
+    <div class="empty-message" id="emptyMessage" style="display:none;">
+        No plants found. Add some in the calendar page!
+    </div>
+</div>
+
+<!-- ECO GUIDE / ENCYCLOPEDIA SECTION -->
+<div class="section">
+    <h2>Eco‑Friendly & Sustainable Plant Care Guide 🌍</h2>
+    <div class="eco-guide-list">
+        <strong>Living Soil & Humus</strong>
+        Healthy soil is a living ecosystem of fungi, bacteria, and micro‑organisms.  
+        Use compost, leaf mold, and worm castings instead of synthetic fertilizers.  
+        Avoid over‑tilling to protect soil structure and carbon storage.
+
+        <strong>Water‑Smart Gardening</strong>
+        Collect rainwater where possible; it’s softer and plant‑friendly.  
+        Water deeply but less often to encourage strong roots.  
+        Use mulch (straw, leaves, wood chips) to reduce evaporation.
+
+        <strong>Natural Fertilizers</strong>
+        Nettle or comfrey tea, banana peel infusions, and worm castings  
+        provide nutrients without chemical runoff or pollution.  
+        Eggshell powder adds gentle calcium for stronger cell walls.
+
+        <strong>Chemical‑Free Pest Management</strong>
+        Focus on prevention: healthy plants resist pests better.  
+        Use neem oil, insecticidal soap, and beneficial insects (ladybugs, lacewings).  
+        Companion planting (basil, marigold, nasturtium) helps repel pests naturally.
+
+        <strong>French Organic Gardening Principles</strong>
+        Paillage (mulching) protects soil and saves water.  
+        Purins de plantes (fermented plant extracts) feed and protect plants.  
+        Crop rotation and mixed plantings maintain soil health and biodiversity.
+
+        <strong>Climate‑Smart & Zero‑Waste Practices</strong>
+        Choose plants adapted to your climate and light conditions.  
+        Reuse pots, recycle soil when safe, and compost plant waste.  
+        Prefer terracotta, bamboo, or recycled materials over single‑use plastics.
+    </div>
+</div>
+
+<script>
+const PLANT_PROFILE_KEY = "plantProfiles";
+
+function loadPlantProfiles() {
+    const raw = localStorage.getItem(PLANT_PROFILE_KEY);
+    if (!raw) return [];
+    try { return JSON.parse(raw); }
+    catch { return []; }
+}
+
+function autoCareProfile(type) {
+    switch(type) {
+        case "tropical":
+            return "💧 Water: Every 5–7 days\n☀️ Light: Bright indirect\n🌿 Notes: Loves humidity, avoid cold drafts.";
+        case "succulent":
+            return "💧 Water: Every 2–3 weeks\n☀️ Light: Bright direct\n🌵 Notes: Use very well‑draining soil.";
+        case "orchid":
+            return "💧 Water: Weekly soak + drain\n☀️ Light: Filtered bright\n🌸 Notes: Needs high humidity and orchid bark.";
+        case "herb":
+            return "💧 Water: Keep soil slightly moist\n☀️ Light: Full sun\n🌿 Notes: Trim regularly to encourage growth.";
+        default:
+            return "💧 Water: Varies by species\n☀️ Light: Check specific needs\n🌱 Notes: Observe leaves and soil for clues.";
+    }
+}
+
+function ecoSoilInfo(type) {
+    return (
+        "🌍 Soil & Sustainability:\n" +
+        "- Use compost and leaf mold instead of synthetic fertilizers.\n" +
+        "- Avoid peat; choose coco coir or local compost.\n" +
+        "- Keep a layer of mulch to protect soil life.\n" +
+        (type === "succulent"
+            ? "- For succulents: add sand or grit for drainage.\n"
+            : "- For most plants: a mix of compost + light soil works well.\n")
+    );
+}
+
+function ecoWaterInfo(type) {
+    return (
+        "💧 Water Ecology:\n" +
+        "- Prefer rainwater or filtered water when possible.\n" +
+        "- Water slowly so soil absorbs instead of runoff.\n" +
+        "- Let the top layer dry slightly before watering again.\n" +
+        (type === "tropical"
+            ? "- Tropical plants appreciate higher humidity (grouping, pebble trays).\n"
+            : type === "succulent"
+            ? "- Succulents must dry completely between waterings.\n"
+            : type === "orchid"
+            ? "- Orchids prefer soaking then full drainage, never sitting in water.\n"
+            : "")
+    );
+}
+
+function ecoExtraInfo(type) {
+    return (
+        "♻ Eco‑Friendly Tips:\n" +
+        "- Use terracotta or recycled pots instead of single‑use plastic.\n" +
+        "- Reuse old soil by refreshing with compost and removing diseased roots.\n" +
+        "- Compost dead leaves and prunings instead of throwing them away.\n" +
+        (type === "herb"
+            ? "- Grow herbs near the kitchen to reduce food waste and packaging.\n"
+            : "")
+    );
+}
+
+function renderLibrary() {
+    const grid = document.getElementById("plantGrid");
+    const empty = document.getElementById("emptyMessage");
+    const search = document.getElementById("searchInput").value.toLowerCase();
+    const typeFilter = document.getElementById("typeFilter").value;
+    const sortFilter = document.getElementById("sortFilter").value;
+
+    let plants = loadPlantProfiles();
+
+    if (search) {
+        plants = plants.filter(p => p.name.toLowerCase().includes(search));
+    }
+
+    if (typeFilter !== "all") {
+        plants = plants.filter(p => p.type === typeFilter);
+    }
+
+    if (sortFilter === "name") {
+        plants.sort((a,b) => a.name.localeCompare(b.name));
+    } else if (sortFilter === "type") {
+        plants.sort((a,b) => a.type.localeCompare(b.type));
+    }
+
+    grid.innerHTML = "";
+
+    if (plants.length === 0) {
+        empty.style.display = "block";
+        return;
+    }
+
+    empty.style.display = "none";
+
+    plants.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "plant-card";
+
+        const care = autoCareProfile(p.type);
+        const soil = ecoSoilInfo(p.type);
+        const water = ecoWaterInfo(p.type);
+        const eco = ecoExtraInfo(p.type);
+
+        card.innerHTML = `
+            <h3>${p.name}</h3>
+            <strong>Type:</strong> ${p.type}<br><br>
+            <strong>Your Notes:</strong><br>${p.notes || "None"}<br><br>
+
+            <div class="care-box">
+                <strong>Core Care (Encyclopedia Style):</strong><br>
+                ${care}
+            </div>
+
+            <div class="soil-box">
+                <strong>Soil & Sustainability:</strong><br>
+                ${soil}
+            </div>
+
+            <div class="water-box">
+                <strong>Water & Ecology:</strong><br>
+                ${water}
+            </div>
+
+            <div class="eco-box">
+                <strong>Eco‑Friendly Practices:</strong><br>
+                ${eco}
+            </div>
+        `;
+
+        grid.appendChild(card);
+    });
+}
+
+document.getElementById("searchInput").oninput = renderLibrary;
+document.getElementById("typeFilter").onchange = renderLibrary;
+document.getElementById("sortFilter").onchange = renderLibrary;
+
+renderLibrary();
+</script>
+
+</body>
+</html>
