@@ -13,82 +13,124 @@
         overflow-x: hidden;
     }
 
-    /* BIG SUN */
+    /* BIG SUN (CSS DRAWN) */
     .sun {
         position: absolute;
-        top: 30px;
-        left: 30px;
-        width: 180px;
-        height: 180px;
+        top: 40px;
+        left: 40px;
+        width: 200px;
+        height: 200px;
         background: #ffeb7f;
         border-radius: 50%;
-        box-shadow: 0 0 60px #ffe066;
+        box-shadow: 0 0 80px #ffe066;
     }
 
-    /* GRASS + FLOWERS + WINDMILLS (FULL WIDTH) */
-    .ground {
+    /* GRASS (CSS ONLY) */
+    .grass {
         position: absolute;
         bottom: 0;
         width: 100%;
-        height: 45vh;
+        height: 40vh;
         background: linear-gradient(#7ed957, #4caf50);
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
         overflow: hidden;
     }
 
-    /* Decorative flowers */
+    /* FLOWERS (CSS ONLY) */
     .flower {
-        width: 60px;
-        height: 60px;
-        margin: 0 20px;
-        background-size: cover;
-        background-repeat: no-repeat;
+        position: absolute;
+        bottom: 20px;
+        width: 40px;
+        height: 40px;
+        background: pink;
+        border-radius: 50%;
+        box-shadow:
+            -20px 0 pink,
+            20px 0 pink,
+            0 -20px pink,
+            0 20px pink;
     }
 
-    /* Windmill */
+    /* WINDMILL (CSS ONLY) */
     .windmill {
+        position: absolute;
+        bottom: 40px;
         width: 120px;
         height: 200px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        margin: 0 40px;
     }
 
-    /* TITLE — BIGGER, BEAUTIFUL */
+    .windmill .pole {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 12px;
+        height: 200px;
+        background: #d9d9d9;
+        transform: translateX(-50%);
+    }
+
+    .windmill .blades {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 120px;
+        height: 120px;
+        transform: translateX(-50%);
+        animation: spin 6s linear infinite;
+    }
+
+    .blade {
+        position: absolute;
+        width: 20px;
+        height: 60px;
+        background: white;
+        border-radius: 10px;
+        left: 50%;
+        transform-origin: bottom center;
+    }
+
+    .blade:nth-child(1) { transform: translateX(-50%) rotate(0deg); }
+    .blade:nth-child(2) { transform: translateX(-50%) rotate(90deg); }
+    .blade:nth-child(3) { transform: translateX(-50%) rotate(180deg); }
+    .blade:nth-child(4) { transform: translateX(-50%) rotate(270deg); }
+
+    @keyframes spin {
+        from { transform: translateX(-50%) rotate(0deg); }
+        to { transform: translateX(-50%) rotate(360deg); }
+    }
+
+    /* TITLE — HUGE */
     .title {
         position: absolute;
-        top: 28%;
+        top: 30%;
         width: 100%;
         text-align: center;
-        font-size: 90px;
+        font-size: 100px;
         color: white;
         font-family: "Brush Script MT", cursive;
-        text-shadow: 3px 3px 10px rgba(0,0,0,0.25);
+        text-shadow: 4px 4px 12px rgba(0,0,0,0.25);
     }
 
-    /* MENU BUTTON — BIGGER */
+    /* MENU BUTTON — BIG */
     .menu-btn {
         position: absolute;
         top: 40px;
         right: 40px;
-        font-size: 70px;
+        font-size: 80px;
         cursor: pointer;
     }
 
-    /* SIDEBAR — BIGGER, PRETTIER */
+    /* SIDEBAR — BIG, PASTEL */
     .sidebar {
         position: fixed;
         top: 0;
-        left: -300px;
-        width: 300px;
+        left: -350px;
+        width: 350px;
         height: 100%;
         background: #fff4b8;
-        box-shadow: 4px 0 15px rgba(0,0,0,0.25);
-        padding: 40px;
+        box-shadow: 4px 0 20px rgba(0,0,0,0.25);
+        padding: 50px;
         transition: 0.4s;
-        font-size: 24px;
+        font-size: 28px;
     }
 
     .sidebar.open {
@@ -97,22 +139,22 @@
 
     .sidebar h2 {
         margin-top: 0;
-        font-size: 36px;
+        font-size: 45px;
         color: #6b5b00;
         font-family: "Brush Script MT", cursive;
     }
 
     .sidebar a {
         display: block;
-        margin: 25px 0;
+        margin: 30px 0;
         text-decoration: none;
         color: #4a4a4a;
-        font-size: 24px;
+        font-size: 28px;
     }
 
     .sidebar a:hover {
         color: #2d7a2d;
-        transform: translateX(8px);
+        transform: translateX(10px);
         transition: 0.2s;
     }
 </style>
@@ -135,11 +177,25 @@
     <a href="school.html">Nature School 🌸</a>
 </div>
 
-<!-- GROUND DECORATIONS -->
-<div class="ground">
-    <div class="flower" style="background-image:url('https://i.imgur.com/8YQ8p8X.png');"></div>
-    <div class="windmill" style="background-image:url('https://i.imgur.com/0Y0Y0Y0.png');"></div>
-    <div class="flower" style="background-image:url('https://i.imgur.com/8YQ8p8X.png');"></div>
+<!-- GRASS -->
+<div class="grass">
+
+    <!-- FLOWERS -->
+    <div class="flower" style="left: 10%;"></div>
+    <div class="flower" style="left: 40%;"></div>
+    <div class="flower" style="left: 70%;"></div>
+
+    <!-- WINDMILL -->
+    <div class="windmill" style="left: 55%;">
+        <div class="pole"></div>
+        <div class="blades">
+            <div class="blade"></div>
+            <div class="blade"></div>
+            <div class="blade"></div>
+            <div class="blade"></div>
+        </div>
+    </div>
+
 </div>
 
 <script>
@@ -151,3 +207,4 @@ function toggleMenu() {
 </body>
 </html>
     
+
