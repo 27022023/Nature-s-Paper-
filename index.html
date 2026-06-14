@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nature's Paper</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #cfeaff; /* pastel baby blue */
+        font-family: "Georgia", serif;
+        overflow-x: hidden;
+    }
+
+    /* Sun */
+    .sun {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 120px;
+        height: 120px;
+        background: #ffeb7f;
+        border-radius: 50%;
+        box-shadow: 0 0 40px #ffe066;
+    }
+
+    /* Grass + flowers + windmills */
+    .ground {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 45vh;
+        background: url('https://i.imgur.com/3YQFQ8G.png'); /* placeholder grass image */
+        background-size: cover;
+        background-position: bottom;
+    }
+
+    /* Title */
+    .title {
+        position: absolute;
+        top: 35%;
+        width: 100%;
+        text-align: center;
+        font-size: 70px;
+        color: white;
+        font-family: "Brush Script MT", cursive;
+        text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Menu button */
+    .menu-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 45px;
+        cursor: pointer;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -260px;
+        width: 260px;
+        height: 100%;
+        background: #fff4b8; /* pastel yellow */
+        box-shadow: 3px 0 10px rgba(0,0,0,0.2);
+        padding: 30px;
+        transition: 0.4s;
+        font-family: "Verdana", sans-serif;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .sidebar h2 {
+        margin-top: 0;
+        font-size: 28px;
+        color: #6b5b00;
+    }
+
+    .sidebar a {
+        display: block;
+        margin: 18px 0;
+        font-size: 20px;
+        text-decoration: none;
+        color: #4a4a4a;
+    }
+
+    .sidebar a:hover {
+        color: #2d7a2d;
+        transform: translateX(5px);
+        transition: 0.2s;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="sun"></div>
+
+<div class="title">Nature's Paper</div>
+
+<div class="menu-btn" onclick="toggleMenu()">🌱</div>
+
+<div class="sidebar" id="sidebar">
+    <h2>Menu</h2>
+    <a href="soil.html">Soil Condition Identifier 🌳</a>
+    <a href="ai.html">AI Gardener 🌷</a>
+    <a href="calendar.html">Plant Care Calendar 🍃</a>
+    <a href="library.html">Plant Library 🌿</a>
+    <a href="school.html">Nature School 🌸</a>
+</div>
+
+<div class="ground"></div>
+
+<script>
+function toggleMenu() {
+    document.getElementById("sidebar").classList.toggle("open");
+}
+</script>
+
+</body>
+</html>
