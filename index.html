@@ -36,7 +36,7 @@
         overflow: visible;
     }
 
-    /* FLOWERS — scattered + line */
+    /* FLOWERS */
     .flower {
         position: absolute;
         width: 55px;
@@ -50,18 +50,45 @@
             0 25px pink;
     }
 
-    /* BUTTERFLIES */
+    /* BUTTERFLIES — PURE CSS */
     .butterfly {
         position: absolute;
-        width: 60px;
-        height: 60px;
-        background: url('https://i.imgur.com/6YV0ZQp.png');
-        background-size: cover;
-        animation: fly 12s linear infinite;
-        opacity: 0.9;
+        width: 40px;
+        height: 40px;
+        animation: fly 12s linear infinite, flap 0.6s ease-in-out infinite alternate;
         z-index: 50;
+        opacity: 0.9;
     }
 
+    /* Wings */
+    .butterfly::before,
+    .butterfly::after {
+        content: "";
+        position: absolute;
+        width: 25px;
+        height: 35px;
+        background: #ffb3d9; /* pastel pink */
+        border-radius: 50% 50% 40% 40%;
+        top: 0;
+    }
+
+    .butterfly::before {
+        left: -15px;
+        transform-origin: right center;
+    }
+
+    .butterfly::after {
+        right: -15px;
+        transform-origin: left center;
+    }
+
+    /* Wing flapping */
+    @keyframes flap {
+        from { transform: rotateY(0deg); }
+        to { transform: rotateY(60deg); }
+    }
+
+    /* Flying path */
     @keyframes fly {
         0% { transform: translateX(-10%) translateY(0) scale(1); }
         25% { transform: translateX(25vw) translateY(-40px) scale(1.1); }
@@ -141,18 +168,18 @@
         z-index: 20;
     }
 
-    /* SIDEBAR — hidden by default, bigger text */
+    /* SIDEBAR — bigger text */
     .sidebar {
         position: fixed;
         top: 0;
-        left: -420px; /* hidden */
+        left: -420px;
         width: 420px;
         height: 100%;
         background: #fff4b8;
         box-shadow: 4px 0 20px rgba(0,0,0,0.25);
         padding: 60px;
         transition: 0.4s;
-        font-size: 40px; /* bigger */
+        font-size: 40px;
         z-index: 30;
     }
 
@@ -172,7 +199,7 @@
         margin: 45px 0;
         text-decoration: none;
         color: #4a4a4a;
-        font-size: 40px; /* bigger */
+        font-size: 40px;
     }
 
     .sidebar a:hover {
@@ -266,4 +293,6 @@ function toggleMenu() {
 
 </body>
 </html>
-                    
+            
+
+        
