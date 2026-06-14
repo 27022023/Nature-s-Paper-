@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Gardener 🌷</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #c8f7d4; /* pastel green */
+        font-family: "Poppins", sans-serif;
+        overflow: hidden;
+    }
+
+    .title {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 80px;
+        color: #ffffff;
+        font-family: "Brush Script MT", cursive;
+        text-shadow: 4px 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .chat-container {
+        width: 80%;
+        height: 60vh;
+        margin: 30px auto;
+        background: #ffffff;
+        border-radius: 30px;
+        padding: 30px;
+        overflow-y: auto;
+        box-shadow: 0 0 25px rgba(0,0,0,0.15);
+        font-size: 24px;
+    }
+
+    .user-msg {
+        background: #e6d6ff; /* lavender */
+        padding: 18px;
+        border-radius: 20px;
+        margin: 15px 0;
+        width: fit-content;
+        max-width: 70%;
+        margin-left: auto;
+    }
+
+    .ai-msg {
+        background: #fff4d9; /* creamy pastel */
+        padding: 18px;
+        border-radius: 20px;
+        margin: 15px 0;
+        width: fit-content;
+        max-width: 70%;
+    }
+
+    .typing {
+        font-size: 20px;
+        color: #777;
+        margin-top: 5px;
+    }
+
+    .input-area {
+        width: 80%;
+        margin: 0 auto 20px;
+        display: flex;
+        gap: 20px;
+    }
+
+    input[type="text"] {
+        flex: 1;
+        padding: 18px;
+        font-size: 24px;
+        border-radius: 20px;
+        border: none;
+        outline: none;
+    }
+
+    button {
+        padding: 18px 30px;
+        font-size: 24px;
+        border-radius: 20px;
+        border: none;
+        background: #a8e6b1;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #8fd99c;
+    }
+
+    .image-upload {
+        width: 80%;
+        margin: 0 auto 40px;
+        background: #ffffff;
+        border-radius: 25px;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.12);
+        font-size: 22px;
+    }
+
+    .image-upload input[type="file"] {
+        margin-top: 10px;
+        font-size: 20px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="title">AI Gardener 🌷</div>
+
+<div class="chat-container" id="chat"></div>
+
+<div class="input-area">
+    <input type="text" id="userInput" placeholder="Ask me anything about plants...">
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<div class="image-upload">
+    <strong>📸 Plant Image (future feature)</strong><br>
+    Upload a plant photo here (for now I’ll just give general tips, later this can connect to a real ID model).
+    <br>
+    <input type="file" id="plantImage" accept="image/*">
+</div>
+
+<script>
+function aiResponse(message) {
+    message = message.toLowerCase();
+
+    // Quick helpers
+    function includesAny(words) {
+        return words.some(w => message.includes(w));
+    }
+
+    // Expert-level plant database (rule-based)
+    if (includesAny(["monstera"])) {
+        return "🌱 Monstera (Swiss cheese plant)\n\n" +
+               "• Light: Bright indirect light, avoid harsh direct sun.\n" +
+               "• Water: Every 7–10 days; let top 3–4 cm of soil dry.\n" +
+               "• Soil: Well-draining mix with perlite; likes airy roots.\n" +
+               "• Humidity: High humidity (50–70%) makes leaves huge.\n" +
+               "• Extra: Give it a moss pole to climb; wipe leaves to keep them shiny.";
+    }
+
+    if (includesAny(["orchid"])) {
+        return "🌸 Orchid (phalaenopsis)\n\n" +
+               "• Light: Bright, filtered light (east or north window).\n" +
+               "• Water: Once a week; soak then drain completely.\n" +
+               "• Soil: Orchid bark, never regular potting soil.\n" +
+               "• Humidity: Loves 50–70% humidity.\n" +
+               "• Extra: Don’t cut green roots; only trim dry, dead ones.";
+    }
+
+    if (includesAny(["cactus"])) {
+        return "🌵 Cactus\n\n" +
+               "• Light: Full sun, south-facing window.\n" +
+               "• Water: Every 2–3 weeks; less in winter.\n" +
+               "• Soil: Sandy, fast-draining cactus mix.\n" +
+               "• Extra: Overwatering is the #1 killer; roots rot easily.";
+    }
+
+    if (includesAny(["succulent"])) {
+        return "🪴 Succulent\n\n" +
+               "• Light: Bright light, some direct sun.\n" +
+               "• Water: When soil is completely dry; every 1–2 weeks.\n" +
+               "• Soil: Cactus/succulent mix with lots of drainage.\n" +
+               "• Extra: Leaves should be firm; mushy = overwatered.";
+    }
+
+    if (includesAny(["aloe"])) {
+        return "🪴 Aloe Vera\n\n" +
+               "• Light: Lots of sun, near a bright window.\n" +
+               "• Water: Every 2 weeks; let soil dry fully.\n" +
+               "• Soil: Sandy, well-draining mix.\n" +
+               "• Extra: Brown tips often mean too little light or too much water.";
+    }
+
+    if (includesAny(["basil"])) {
+        return "🌿 Basil\n\n" +
+               "• Light: Full sun (6+ hours/day).\n" +
+               "• Water: Keep soil evenly moist, not soggy.\n" +
+               "• Soil: Rich, well-draining soil.\n" +
+               "• Extra: Pinch off flower buds to keep leaves coming.";
+    }
+
+    if (includesAny(["rose"])) {
+        return "🌹 Roses\n\n" +
+               "• Light: At least 6 hours of direct sun.\n" +
+               "• Water: Deep watering 1–2 times/week.\n" +
+               "• Soil: Rich, well-draining soil.\n" +
+               "• Extra: Watch for aphids and black spot; prune dead stems.";
+    }
+
+    if (includesAny(["lavender"])) {
+        return "💜 Lavender\n\n" +
+               "• Light: Full sun.\n" +
+               "• Water: Let soil dry between waterings.\n" +
+               "• Soil: Sandy, well-draining soil.\n" +
+               "• Extra: Hates wet roots; great for dry, sunny spots.";
+    }
+
+    if (includesAny(["snake plant", "sansevieria"])) {
+        return "🐍 Snake Plant (Sansevieria)\n\n" +
+               "• Light: Low to bright indirect light.\n" +
+               "• Water: Every 2–3 weeks; very drought-tolerant.\n" +
+               "• Soil: Well-draining mix.\n" +
+               "• Extra: Perfect beginner plant; almost impossible to kill.";
+    }
+
+    if (includesAny(["pothos"])) {
+        return "🌿 Pothos\n\n" +
+               "• Light: Low to bright indirect.\n" +
+               "• Water: When top soil is dry.\n" +
+               "• Soil: Standard potting mix.\n" +
+               "• Extra: Great hanging plant; easy to propagate in water.";
+    }
+
+    if (includesAny(["peace lily"])) {
+        return "🤍 Peace Lily\n\n" +
+               "• Light: Low to medium indirect light.\n" +
+               "• Water: Keep soil slightly moist; droops when thirsty.\n" +
+               "• Extra: Sensitive to overwatering; yellow leaves = too much water.";
+    }
+
+    if (includesAny(["fiddle leaf fig"])) {
+        return "🍃 Fiddle Leaf Fig\n\n" +
+               "• Light: Bright, indirect light.\n" +
+               "• Water: When top soil is dry; hates soggy soil.\n" +
+               "• Extra: Very dramatic plant; doesn’t like being moved often.";
+    }
+
+    // General care questions
+    if (includesAny(["how do i care", "care", "tips"])) {
+        return "🌿 General Plant Care Tips:\n\n" +
+               "• Light: Most houseplants love bright, indirect light.\n" +
+               "• Water: Water when the top 2–3 cm of soil is dry.\n" +
+               "• Soil: Use well-draining soil; add perlite for better drainage.\n" +
+               "• Pot: Make sure there are drainage holes.\n" +
+               "• Extra: Always check the specific plant type for exact needs.";
+    }
+
+    if (includesAny(["water", "watering"])) {
+        return "💧 Watering Guide:\n\n" +
+               "• Check soil with your finger; if dry 2–3 cm down, water.\n" +
+               "• Use room-temperature water.\n" +
+               "• Pour slowly until water drains from the bottom.\n" +
+               "• Empty the saucer so roots don’t sit in water.\n" +
+               "• Less water in winter; plants grow slower.";
+    }
+
+    if (includesAny(["sun", "light"])) {
+        return "☀️ Light Guide:\n\n" +
+               "• Bright indirect: Near a window but not in direct sun.\n" +
+               "• Direct sun: Cacti, succulents, lavender love it.\n" +
+               "• Low light: Snake plant, pothos, peace lily can handle it.\n" +
+               "• Rotate plants every few weeks so they grow evenly.";
+    }
+
+    if (includesAny(["soil"])) {
+        return "🌱 Soil Guide:\n\n" +
+               "• Houseplants: Use general potting mix with perlite.\n" +
+               "• Cacti/succulents: Sandy, fast-draining mix.\n" +
+               "• Orchids: Bark mix, never regular soil.\n" +
+               "• Herbs: Rich, well-draining soil with compost.";
+    }
+
+    if (includesAny(["fertilizer", "feed"])) {
+        return "🍂 Fertilizer Guide:\n\n" +
+               "• Use a balanced liquid fertilizer (e.g., 10-10-10).\n" +
+               "• Feed every 4–6 weeks in spring and summer.\n" +
+               "• Don’t fertilize stressed or very dry plants.\n" +
+               "• Less or none in winter; plants rest.";
+    }
+
+    if (includesAny(["yellow leaves", "yellow leaf"])) {
+        return "💛 Yellow Leaves:\n\n" +
+               "• Often from overwatering or poor drainage.\n" +
+               "• Could also be lack of light or old leaves aging.\n" +
+               "• Check roots for rot; adjust watering and light.";
+    }
+
+    if (includesAny(["brown tips", "brown edges"])) {
+        return "🤎 Brown Tips:\n\n" +
+               "• Common causes: low humidity, too much fertilizer, or inconsistent watering.\n" +
+               "• Trim brown tips if they bother you.\n" +
+               "• Increase humidity and water more evenly.";
+    }
+
+    if (includesAny(["pest", "bugs", "aphid", "spider mite"])) {
+        return "🐛 Pests:\n\n" +
+               "• Aphids: Tiny green bugs; wash off with water or use insecticidal soap.\n" +
+               "• Spider mites: Fine webbing; increase humidity and use neem oil.\n" +
+               "• Fungus gnats: Let soil dry more; use yellow sticky traps.";
+    }
+
+    // Default
+    return "🌷 I'm your AI Gardener!\n\n" +
+           "Ask me about a specific plant (Monstera, orchid, cactus, basil, aloe, pothos, snake plant, etc.),\n" +
+           "or ask about watering, light, soil, fertilizer, pests, or leaf problems.";
+}
+
+function sendMessage() {
+    const input = document.getElementById("userInput");
+    const text = input.value.trim();
+    if (text === "") return;
+
+    const chat = document.getElementById("chat");
+
+    const userBubble = document.createElement("div");
+    userBubble.className = "user-msg";
+    userBubble.innerText = text;
+    chat.appendChild(userBubble);
+
+    const typing = document.createElement("div");
+    typing.className = "typing";
+    typing.innerText = "AI Gardener is thinking...";
+    chat.appendChild(typing);
+
+    chat.scrollTop = chat.scrollHeight;
+    input.value = "";
+
+    setTimeout(() => {
+        typing.remove();
+        const aiBubble = document.createElement("div");
+        aiBubble.className = "ai-msg";
+        aiBubble.innerText = aiResponse(text);
+        chat.appendChild(aiBubble);
+        chat.scrollTop = chat.scrollHeight;
+    }, 600);
+}
+</script>
+
+</body>
+</html>
