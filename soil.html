@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Soil Condition Identifier 🌳</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #d9c2a3; /* pastel soil brown */
+        font-family: "Poppins", sans-serif;
+        overflow-x: hidden;
+    }
+
+    /* TITLE */
+    .title {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 80px;
+        color: #f5f5f5;
+        font-family: "Brush Script MT", cursive;
+        text-shadow: 4px 4px 12px rgba(0,0,0,0.25);
+    }
+
+    /* INSTRUCTIONS BOX */
+    .instructions {
+        width: 70%;
+        margin: 40px auto;
+        background: #fff7e6;
+        padding: 40px;
+        border-radius: 25px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        font-size: 26px;
+        line-height: 1.6;
+    }
+
+    .instructions h2 {
+        font-family: "Brush Script MT", cursive;
+        font-size: 50px;
+        margin-top: 0;
+        color: #6b4f2a;
+    }
+
+    /* UPLOAD SECTION */
+    .upload-box {
+        width: 70%;
+        margin: 40px auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 25px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        text-align: center;
+        font-size: 26px;
+    }
+
+    input[type="file"], input[type="button"] {
+        font-size: 24px;
+        padding: 15px;
+        margin: 20px;
+        border-radius: 15px;
+        border: none;
+        background: #c2e7d9;
+        cursor: pointer;
+    }
+
+    input[type="file"]:hover, input[type="button"]:hover {
+        background: #a8d9c7;
+    }
+
+    /* RESULTS LEGEND */
+    .legend {
+        width: 70%;
+        margin: 40px auto;
+        background: #fff7e6;
+        padding: 40px;
+        border-radius: 25px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        font-size: 26px;
+    }
+
+    .legend h2 {
+        font-family: "Brush Script MT", cursive;
+        font-size: 50px;
+        margin-top: 0;
+        color: #6b4f2a;
+    }
+
+    .legend-item {
+        margin: 20px 0;
+        display: flex;
+        align-items: center;
+        font-size: 28px;
+    }
+
+    .dot {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+
+    /* COLORS */
+    .perfect { background: #7ed957; }
+    .dry { background: #ffcc66; }
+    .overwater { background: #66b3ff; }
+    .rot { background: #9966cc; }
+    .compact { background: #c68c53; }
+    .nutrient { background: #ff9999; }
+    .sun { background: #ffe680; }
+    .shade { background: #b3c6ff; }
+
+    /* AI RESULT BOX */
+    .analysis {
+        width: 70%;
+        margin: 40px auto 80px;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 25px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        font-size: 26px;
+        min-height: 150px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="title">Soil Condition Identifier 🌳</div>
+
+<div class="instructions">
+    <h2>✨💚 Instructions</h2>
+    <ul>
+        <li>Cut a small strip of paper (any paper works).</li>
+        <li>Color the bottom edge with a marker.</li>
+        <li>Press the colored edge gently into the soil for 3–5 seconds.</li>
+        <li>Take a clear photo of the paper strip.</li>
+        <li>Upload the photo below or take one instantly.</li>
+    </ul>
+</div>
+
+<div class="upload-box">
+    <h2>📸 Upload or Take a Photo</h2>
+    <input type="file" accept="image/*">
+    <input type="button" value="Take Photo">
+</div>
+
+<div class="legend">
+    <h2>🌈 What the Colors Mean</h2>
+
+    <div class="legend-item"><div class="dot perfect"></div>🌿 Perfect Condition — soil moisture is ideal</div>
+    <div class="legend-item"><div class="dot dry"></div>💧 Needs More Water — soil is too dry</div>
+    <div class="legend-item"><div class="dot overwater"></div>🌊 Overwatered — soil is too wet</div>
+    <div class="legend-item"><div class="dot rot"></div>🪴 Root Rot Risk — poor drainage or waterlogged</div>
+    <div class="legend-item"><div class="dot compact"></div>🌫️ Soil Compaction — roots may struggle to grow</div>
+    <div class="legend-item"><div class="dot nutrient"></div>🍂 Low Nutrients — soil may need fertilizing</div>
+    <div class="legend-item"><div class="dot sun"></div>☀️ Too Much Sun — soil dries too quickly</div>
+    <div class="legend-item"><div class="dot shade"></div>🌧️ Too Little Sun — soil stays cold and damp</div>
+</div>
+
+<div class="analysis">
+    <h2>🔍 AI Analysis Will Appear Here</h2>
+    <p>Upload a photo to see your soil condition.</p>
+</div>
+
+</body>
+</html>
