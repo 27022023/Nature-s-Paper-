@@ -3,6 +3,7 @@
 <head>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
 <!-- Favicon (browser tab) -->
 <link rel="icon" type="image/png" sizes="32x32" href="icon_1781470241782.png">
 
@@ -11,6 +12,7 @@
 
 <!-- Android / PWA manifest -->
 <link rel="manifest" href="manifest.json">
+
 <meta charset="UTF-8">
 <title>Nature's Paper</title>
 
@@ -41,12 +43,12 @@
         position: absolute;
         bottom: 0;
         width: 100%;
-        height: 30vh; /* LOWER */
+        height: 30vh;
         background: linear-gradient(#7ed957, #4caf50);
         overflow: visible;
     }
 
-    /* FLOWERS — MANY MORE */
+    /* FLOWERS */
     .flower {
         position: absolute;
         bottom: 10px;
@@ -61,7 +63,7 @@
             0 25px pink;
     }
 
-    /* WINDMILLS — MORE + BIGGER */
+    /* WINDMILLS */
     .windmill {
         position: absolute;
         bottom: 30px;
@@ -109,7 +111,7 @@
         to { transform: translateX(-50%) rotate(360deg); }
     }
 
-    /* TITLE — PERFECTLY CENTERED + HUGE */
+    /* TITLE */
     .title {
         position: absolute;
         top: 32%;
@@ -122,7 +124,7 @@
         z-index: 10;
     }
 
-    /* MENU BUTTON — BIGGER + MOVED SO IT NEVER TOUCHES SUN */
+    /* MENU BUTTON */
     .menu-btn {
         position: absolute;
         top: 40px;
@@ -132,7 +134,7 @@
         z-index: 20;
     }
 
-    /* SIDEBAR — MOVED DOWN SO IT NEVER COVERS SUN */
+    /* SIDEBAR — SLIGHTLY BIGGER TEXT */
     .sidebar {
         position: fixed;
         top: 0;
@@ -143,7 +145,7 @@
         box-shadow: 4px 0 20px rgba(0,0,0,0.25);
         padding: 60px;
         transition: 0.4s;
-        font-size: 30px;
+        font-size: 36px; /* bigger */
         z-index: 30;
     }
 
@@ -153,7 +155,7 @@
 
     .sidebar h2 {
         margin-top: 0;
-        font-size: 50px;
+        font-size: 60px; /* bigger */
         color: #6b5b00;
         font-family: "Brush Script MT", cursive;
     }
@@ -163,7 +165,7 @@
         margin: 35px 0;
         text-decoration: none;
         color: #4a4a4a;
-        font-size: 30px;
+        font-size: 38px; /* bigger */
     }
 
     .sidebar a:hover {
@@ -191,7 +193,7 @@
     <a href="school.html">Nature School 🌸</a>
 </div>
 
-<!-- GRASS + MANY FLOWERS + MANY WINDMILLS -->
+<!-- GRASS + FLOWERS + WINDMILLS -->
 <div class="grass">
 
     <!-- FLOWERS -->
@@ -237,5 +239,3 @@ function toggleMenu() {
 
 </body>
 </html>
-        
-    
